@@ -46,6 +46,50 @@ wss failed
 
 10:59 AM 07-Apr-25
 
-##Tutorial: Create a minimal API with ASP.NET Core
-##Tutorial: Create a controller-based web API with ASP.NET Core
+## Tutorial: Create a minimal API with ASP.NET Core
+## Tutorial: Create a controller-based web API with ASP.NET Core
+links
+[https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-9.0&tabs=visual-studio]
+[https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-9.0&tabs=visual-studio]
+[https://learn.microsoft.com/en-us/aspnet/core/fundamentals/apis?view=aspnetcore-9.0]
+
+two approaches to creating APIs:
+a controller-based approach
+minimal APIs
+
+WebApplication and WebApplication builder (introduced in .NET 6)
+[chapter Andrew Lock]
+### Listing 3.1 Creating a new minimal API application
+dotnet new sln -n abc
+dotnet new web -o baz --use-program-main --no test
+dotnet sln add baz
+
+A controller based
+dotnet new webapi --use-controllers -o TodoApi
+
+namespace APIWithControllers;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+
+        builder.Services.AddControllers();
+        var app = builder.Build();
+
+        app.UseHttpsRedirection();
+
+        app.MapControllers();
+
+        app.Run();
+    }
+}
+
+1. Create a WebApplicationBuilder instance
+2. Register the required services
+3. Call Build() to create a WebApplication instance
+4. Add middleware (to the instance)
+5. Map the endpoints
+6. Call Run()
 
