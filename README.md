@@ -61,7 +61,7 @@ WebApplication and WebApplication builder (introduced in .NET 6)
 [chapter Andrew Lock]
 ### Listing 3.1 Creating a new minimal API application
 dotnet new sln -n abc
-dotnet new web -o baz --use-program-main --no test
+dotnet new web -o baz --use-program-main
 dotnet sln add baz
 
 A controller based
